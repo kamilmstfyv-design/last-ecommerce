@@ -2,7 +2,6 @@
 import { productsDummyData } from "@/constans/productsDummy";
 import { Product } from "@/types/productType";
 import ProductCard from "@/components/layouts/ProductCard";
-import React from "react";
 import { useRouter } from "next/navigation";
 
 const Shop = () => {
