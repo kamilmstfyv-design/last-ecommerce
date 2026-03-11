@@ -2,10 +2,14 @@
 import { productsDummyData } from "@/constans/productsDummy";
 import Image from "next/image";
 import React, { useState } from "react";
-
+import { useCartStore } from "@/store/useCartStore";
+import { useRouter } from "next/navigation";
 const ProductDetail = ({ slug }: { slug: string }) => {
+  const router = useRouter();
   const product = productsDummyData.find((product) => product._id === slug);
   const [mainImage, setMainImage] = useState<string>(product?.image?.[0] || "");
+  const { addItem, items } = useCartStore();
+  console.log(items);
   return (
     <div className="flex flex-col md:flex-row items-start">
       <div className="w-full md:w-1/2">
@@ -16,7 +20,7 @@ const ProductDetail = ({ slug }: { slug: string }) => {
           height={600}
         />
         <div>
-          <div className="grid grid-cols-4 gap-4 w-[600px]">
+          <div className="grid md:grid-cols-4 grid-cols-2 gap-4 max-w-[600px]">
             {product?.image?.map((image, index) => (
               <div
                 key={index}
@@ -69,11 +73,17 @@ const ProductDetail = ({ slug }: { slug: string }) => {
           </div>
         </div>
         <div className="flex gap-4 mt-4">
-          <button className="bg-orange-500 text-white px-8 py-4 rounded-md text-lg font-bold w-full hover:bg-orange-600 transition-all duration-300">
+          <button
+            onClick={() => addItem(product)}
+            className="bg-orange-500 text-white px-8 py-4 rounded-md text-lg font-bold w-full hover:bg-orange-600 transition-all duration-300"
+          >
             Add to cart
           </button>
-          <button className="bg-primary text-white px-8 py-4 rounded-md text-lg font-bold w-full hover:bg-primary/80 transition-all duration-300">
-            Add to wishlist
+          <button
+            onClick={() => router.push(`/cart`)}
+            className="bg-primary text-white px-8 py-4 rounded-md text-lg font-bold w-full hover:bg-primary/80 transition-all duration-300"
+          >
+            Go to cart
           </button>
         </div>
       </div>
