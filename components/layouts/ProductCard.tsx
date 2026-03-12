@@ -4,8 +4,20 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
+import { useAuth } from "@clerk/nextjs";
+import { toast } from "sonner";
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const { isSignedIn } = useAuth();
+  const handleAddToCart = () => {
+    if (!isSignedIn) {
+      toast.error("Add to cart failed! Please sign in to add to cart.");
+      return;
+    }
+    addItem(product);
+    toast.success("Product added to cart successfully!");
+  };
+
   const router = useRouter();
   const { addItem } = useCartStore();
   return (
@@ -47,7 +59,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
           <button
             className="ml-auto  px-4 py-1.5 bg-orange-600 text-white font-bold border border-transparent rounded-full text-xs hover:bg-white hover:text-orange-600 hover:border-orange-600 transition-all duration-300 w-full text-center"
-            onClick={() => addItem(product)}
+            onClick={handleAddToCart}
           >
             Add to cart
           </button>

@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "raw.githubusercontent.com",
-        pathname: "/**", // Bütün alt qovluqlara icazə verir
+        pathname: "/**", // Allows all subpaths
       },
     ],
   },

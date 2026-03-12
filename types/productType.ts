@@ -5,14 +5,14 @@ export interface Product {
   description: string;
   price: number;
   offerPrice: number;
-  image: string[]; // Şəkillər massiv olduğu üçün
+  image: string[]; // Images are stored as an array
   category:
     | "Earphone"
     | "Headphone"
     | "Smartphone"
     | "Accessories"
     | "Camera"
-    | "Laptop"; // Kateqoriyalar sabitdirsə bu şəkildə yaza bilərsən
+    | "Laptop"; // Categories are fixed, so we use a union
   date: number;
   __v: number;
 }

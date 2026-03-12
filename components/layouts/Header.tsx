@@ -6,6 +6,7 @@ import MobileMenu from "./MobileMenu";
 import { useCartStore } from "@/store/useCartStore";
 import ShoppingCartBtn from "../btns/ShoppingCartBtn";
 import CartBtnPopUp from "./CartBtnPopUp";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 const Header = () => {
   return (
@@ -31,13 +32,22 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <CartBtnPopUp />
           <Search />
-          <Button
-            variant="outline"
-            className="flex items-center gap-2 cursor-pointer hover:bg-primary hover:text-white transition-colors font-bold"
-          >
-            <User />
-            Account
-          </Button>
+
+          {/* User profile button (Clerk) */}
+          <Show when="signed-out">
+            <SignInButton mode="modal">
+              <Button
+                variant="outline"
+                className="flex items-center gap-2 cursor-pointer hover:bg-primary hover:text-white transition-colors font-bold"
+              >
+                <User />
+                Account
+              </Button>
+            </SignInButton>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
       </div>
     </header>

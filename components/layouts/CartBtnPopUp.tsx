@@ -20,12 +20,12 @@ const CartBtnPopUp = () => {
           <ShoppingCartBtn />
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 p-4" align="end">
-        <h3 className="font-bold text-lg mb-4 border-b pb-2">Səbətim</h3>
+      <PopoverContent className="w-80 p-4 mx-auto" align="end">
+        <h3 className="font-bold text-lg mb-4 border-b pb-2">My Cart</h3>
 
         {items.length === 0 ? (
           <div className="py-6 text-center text-gray-500">
-            Səbətiniz hələ ki boşdur.
+            Your cart is empty for now.
           </div>
         ) : (
           <>
@@ -56,11 +56,11 @@ const CartBtnPopUp = () => {
             <div className="mt-4 pt-4 border-t flex flex-col gap-2">
               <Link href="/cart">
                 <Button className="w-full font-bold" variant="outline">
-                  Səbətə Get
+                  Go to Cart
                 </Button>
               </Link>
               <Button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold">
-                Ödəniş Et
+                Checkout
               </Button>
             </div>
           </>
