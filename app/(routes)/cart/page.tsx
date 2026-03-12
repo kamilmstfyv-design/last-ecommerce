@@ -21,8 +21,8 @@ const Cart = () => {
     0,
   );
   return (
-    <div className="px-container py-10 flex gap-10">
-      <div className="w-4/5">
+    <div className="px-container py-10 flex flex-col md:flex-row gap-10">
+      <div className="md:w-4/5 w-full">
         <div className="flex items-center justify-between mb-8 border-b border-gray-500/30 pb-6">
           <p className="text-2xl md:text-3xl text-gray-500">
             Your <span className="font-medium text-orange-600">Cart</span>
@@ -98,7 +98,7 @@ const Cart = () => {
           ))}
         </div>
       </div>
-      <div className="w-1/5 h-full bg-gray-100 p-4 rounded-lg">
+      <div className="md:w-1/5 w-full h-full bg-gray-100 p-4 rounded-lg">
         <h1 className="text-2xl font-bold border-b border-gray-500/30 pb-4">
           Order Summary
         </h1>
