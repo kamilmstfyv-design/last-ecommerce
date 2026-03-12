@@ -1,9 +1,11 @@
 import Link from "next/link";
-import React from "react";
 import Navbar from "./Navbar";
 import { Search, ShoppingCart, User } from "lucide-react";
 import { Button } from "../ui/button";
 import MobileMenu from "./MobileMenu";
+import { useCartStore } from "@/store/useCartStore";
+import ShoppingCartBtn from "../btns/ShoppingCartBtn";
+import CartBtnPopUp from "./CartBtnPopUp";
 
 const Header = () => {
   return (
@@ -27,7 +29,7 @@ const Header = () => {
 
         {/* search bar and user login   (right side) */}
         <div className="flex items-center gap-4">
-          <ShoppingCart />
+          <CartBtnPopUp />
           <Search />
           <Button
             variant="outline"

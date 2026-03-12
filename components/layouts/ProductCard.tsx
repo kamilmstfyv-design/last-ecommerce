@@ -46,13 +46,10 @@ const ProductCard = ({ product }: { product: Product }) => {
             <p className="text-lg font-medium">{product.offerPrice}</p>
           </div>
           <button
-            className="ml-auto max-sm:hidden px-4 py-1.5 bg-red-500 text-white font-bold border border-gray-500/20 rounded-full text-xs hover:bg-slate-50 transition w-full text-center"
-            onClick={() => {
-              router.push(`/cart`);
-              addItem(product);
-            }}
+            className="ml-auto max-sm:hidden px-4 py-1.5 bg-orange-600 text-white font-bold border border-transparent rounded-full text-xs hover:bg-white hover:text-orange-600 hover:border-orange-600 transition-all duration-300 w-full text-center"
+            onClick={() => addItem(product)}
           >
-            Buy now
+            Add to cart
           </button>
         </div>
       </div>
