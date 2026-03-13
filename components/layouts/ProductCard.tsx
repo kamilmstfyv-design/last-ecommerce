@@ -1,7 +1,8 @@
+"use client";
 import { Product } from "@/types/productType";
 import { HeartIcon } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuth } from "@clerk/nextjs";
@@ -19,7 +20,10 @@ const ProductCard = ({ product }: { product: Product }) => {
   };
 
   const router = useRouter();
-  const { addItem } = useCartStore();
+  const { addItem, wishList, toggleWishlist } = useCartStore();
+  console.log(wishList);
+  const isInWishlist = wishList.some((item: any) => item._id === product._id);
+
   return (
     <div className="flex flex-col group items-center justify-center cursor-pointer relative bg-gray-100 rounded-lg overflow-hidden gap-2">
       <Image
@@ -29,8 +33,16 @@ const ProductCard = ({ product }: { product: Product }) => {
         height={800}
         className="group-hover:scale-105 transition object-cover w-4/5 h-4/5 md:w-full md:h-full"
       />
-      <button className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 cursor-pointer">
-        <HeartIcon className="h-4 w-4  " />
+      <button
+        className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleWishlist(product);
+        }}
+      >
+        <HeartIcon
+          className={`h-4 w-4  ${isInWishlist ? "text-red-500 fill-red-500" : "text-gray-500 fill-none"}`}
+        />
       </button>
       <div>
         <div className="flex flex-col px-10 gap-2 pb-6">

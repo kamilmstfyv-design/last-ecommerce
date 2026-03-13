@@ -19,6 +19,10 @@ export const navLinks = [
     label: "Seller Panel",
     href: "/seller",
   },
+  {
+    label: "Wishlist",
+    href: "/wishlist",
+  },
 ];
 
 export const sliderData = [
